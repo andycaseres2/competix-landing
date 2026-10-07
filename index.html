@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Competix — Análisis de mercado para vendedores de Mercado Libre</title>
+    <meta
+      name="description"
+      content="Extensión de Chrome que te dice a qué precio vender, cuánta competencia hay y cuánto ganas, directo en Mercado Libre."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Lucide icons (ISC license), defined once and reused with <use>. -->
+    <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+      <symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 3v16a2 2 0 0 0 2 2h16" /><path d="M18 17V9" /><path d="M13 17V5" /><path d="M8 17v-3" /></symbol>
+      <symbol id="i-calc" viewBox="0 0 24 24"><rect width="16" height="20" x="4" y="2" rx="2" /><line x1="8" x2="16" y1="6" y2="6" /><line x1="16" x2="16" y1="14" y2="18" /><path d="M16 10h.01M12 10h.01M8 10h.01M12 14h.01M8 14h.01M12 18h.01M8 18h.01" /></symbol>
+      <symbol id="i-trophy" viewBox="0 0 24 24"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" /><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" /><path d="M4 22h16" /><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22" /><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22" /><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z" /></symbol>
+      <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><circle cx="12" cy="12" r="6" /><circle cx="12" cy="12" r="2" /></symbol>
+      <symbol id="i-history" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" /><path d="M3 3v5h5" /><path d="M12 7v5l4 2" /></symbol>
+      <symbol id="i-tag" viewBox="0 0 24 24"><path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z" /><circle cx="7.5" cy="7.5" r=".5" fill="currentColor" /></symbol>
+      <symbol id="i-dollar" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8" /><path d="M12 18V6" /></symbol>
+      <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" /><path d="M9 18h6" /><path d="M10 22h4" /></symbol>
+      <symbol id="i-signal" viewBox="0 0 24 24"><path d="M2 20h.01" /><path d="M7 20v-4" /><path d="M12 20v-8" /></symbol>
+      <symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" x2="12" y1="15" y2="3" /></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><path d="m9 12 2 2 4-4" /></symbol>
+      <symbol id="i-minus" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><path d="M8 12h8" /></symbol>
+      <symbol id="i-crown" viewBox="0 0 24 24"><path d="M11.562 3.266a.5.5 0 0 1 .876 0L15.39 8.87a1 1 0 0 0 1.516.294L21.183 5.5a.5.5 0 0 1 .798.519l-2.834 10.246a1 1 0 0 1-.956.734H5.81a1 1 0 0 1-.957-.734L2.02 6.02a.5.5 0 0 1 .798-.519l4.276 3.664a1 1 0 0 0 1.516-.294z" /><path d="M5 21h14" /></symbol>
+      <symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" /></symbol>
+      <symbol id="i-chrome" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><circle cx="12" cy="12" r="4" /><line x1="21.17" x2="12" y1="8" y2="8" /><line x1="3.95" x2="8.54" y1="6.06" y2="14" /><line x1="10.88" x2="15.46" y1="21.94" y2="14" /></symbol>
+    </svg>
+
+    <header class="site-header">
+      <div class="container">
+        <a class="brand" href="./">
+          <svg class="icon"><use href="#i-chart" /></svg>
+          Competix
+        </a>
+        <nav class="nav">
+          <a href="#funciones">Funciones</a>
+          <a href="#como-funciona">Cómo funciona</a>
+          <a href="#precios">Precios</a>
+          <a href="#faq">Preguntas</a>
+          <a class="btn btn-gold" href="#precios">Empezar gratis</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container">
+          <div>
+            <span class="eyebrow">
+              <svg class="icon"><use href="#i-chrome" /></svg>
+              Extensión para Google Chrome
+            </span>
+            <h1>Vende en Mercado Libre con <em>datos</em>, no con intuición.</h1>
+            <p class="lead">
+              Competix analiza cualquier búsqueda y te dice a qué precio vender, cuánta competencia hay y cuánto vas
+              a ganar después de comisiones. Directo en la página, sin copiar nada a Excel.
+            </p>
+            <div class="hero-actions">
+              <!-- Replace href with the Chrome Web Store listing once it is published. -->
+              <a class="btn btn-gold" href="#precios">
+                <svg class="icon"><use href="#i-chrome" /></svg>
+                Agregar a Chrome — gratis
+              </a>
+              <a class="btn btn-outline" href="#como-funciona">Ver cómo funciona</a>
+            </div>
+            <p class="hero-note">Funciona en Mercado Libre Colombia, México, Argentina y Chile.</p>
+          </div>
+
+          <!-- Static drawing of the panel, so the page needs no screenshots. -->
+          <div class="mock" role="img" aria-label="Vista del panel de Competix sobre una búsqueda de Mercado Libre">
+            <div class="mock-header">
+              Competix
+              <span class="mock-pro"><svg class="icon"><use href="#i-crown" /></svg> Pro</span>
+            </div>
+            <div class="mock-tabs">
+              <span class="active"><svg class="icon"><use href="#i-chart" /></svg>Resumen</span>
+              <span><svg class="icon"><use href="#i-calc" /></svg>Ganancia</span>
+              <span><svg class="icon"><use href="#i-trophy" /></svg>Productos</span>
+            </div>
+            <div class="mock-body">
+              <div class="mock-card">
+                <span class="mock-label"><svg class="icon"><use href="#i-dollar" /></svg>Precio recomendado</span>
+                <strong class="mock-value">$ 62.900 – $ 74.500</strong>
+                <span class="mock-label">Rango donde vende el top 10</span>
+              </div>
+              <div class="mock-badges">
+                <span class="badge badge-medium"><svg class="icon"><use href="#i-signal" /></svg>Competencia media</span>
+                <span class="badge badge-neutral">48 publicaciones</span>
+              </div>
+              <div class="mock-insight">
+                <svg class="icon"><use href="#i-bulb" /></svg>
+                <span>Los que más venden cobran 8% menos que el mercado. Acá gana el precio.</span>
+              </div>
+              <div class="mock-card">
+                <span class="mock-label"><svg class="icon"><use href="#i-history" /></svg>Historial de precio</span>
+                <svg class="mock-chart" viewBox="0 0 300 70" preserveAspectRatio="none" aria-hidden="true">
+                  <line x1="0" x2="300" y1="66" y2="66" stroke="#2a2a2a" />
+                  <polyline
+                    points="6,30 50,30 94,44 138,44 182,14 226,22 270,56 294,50"
+                    fill="none"
+                    stroke="#facc15"
+                    stroke-width="2"
+                    stroke-linejoin="round"
+                    vector-effect="non-scaling-stroke"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="funciones">
+        <div class="container">
+          <h2 class="section-title">Todo lo que necesitas para decidir qué vender</h2>
+          <p class="section-lead">
+            Abres una búsqueda en Mercado Libre y Competix aparece al costado con el análisis listo.
+          </p>
+          <div class="features">
+            <article class="feature">
+              <div class="feature-icon"><svg class="icon"><use href="#i-dollar" /></svg></div>
+              <h3>Precio recomendado</h3>
+              <p>El rango de precio donde venden los líderes de esa búsqueda, para no regalar margen ni quedar caro.</p>
+            </article>
+            <article class="feature">
+              <div class="feature-icon"><svg class="icon"><use href="#i-calc" /></svg></div>
+              <h3>Calculadora de ganancia</h3>
+              <p>Escribe tu costo y ve cuánto te queda por unidad después de la comisión y el envío.</p>
+            </article>
+            <article class="feature">
+              <div class="feature-icon"><svg class="icon"><use href="#i-signal" /></svg></div>
+              <h3>Nivel de competencia</h3>
+              <p>Cuántas publicaciones ya venden miles de unidades: sabes si es fácil o difícil entrar.</p>
+            </article>
+            <article class="feature">
+              <div class="feature-icon"><svg class="icon"><use href="#i-target" /></svg></div>
+              <h3>Oportunidades</h3>
+              <p>Productos que venden mucho pero tienen mala calificación: clientes esperando una mejor oferta.</p>
+            </article>
+            <article class="feature">
+              <div class="feature-icon"><svg class="icon"><use href="#i-history" /></svg></div>
+              <h3>Historial de precios</h3>
+              <p>Cómo cambia el precio de cada publicación con el tiempo, y flechas de tendencia en cada búsqueda.</p>
+            </article>
+            <article class="feature">
+              <div class="feature-icon"><svg class="icon"><use href="#i-tag" /></svg></div>
+              <h3>Palabras clave y exportación</h3>
+              <p>Las palabras que usan los más vendidos en sus títulos y toda la búsqueda exportada a Excel.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="como-funciona">
+        <div class="container">
+          <h2 class="section-title">Cómo funciona</h2>
+          <p class="section-lead">En menos de un minuto estás analizando tu primer producto.</p>
+          <div class="steps">
+            <div class="step">
+              <h3>Instala la extensión</h3>
+              <p>Agrégala a Google Chrome. No necesitas crear cuenta para el plan gratis.</p>
+            </div>
+            <div class="step">
+              <h3>Busca en Mercado Libre</h3>
+              <p>Busca cualquier producto como lo haces siempre. Competix lee la página y arma el análisis.</p>
+            </div>
+            <div class="step">
+              <h3>Decide con datos</h3>
+              <p>Revisa el precio, la competencia y tu ganancia antes de invertir en inventario.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="precios">
+        <div class="container">
+          <h2 class="section-title">Precios simples</h2>
+          <p class="section-lead">Empieza gratis. Pasa a Pro cuando quieras ir más a fondo. Cancela cuando quieras.</p>
+          <div class="pricing">
+            <div class="plan">
+              <h3 class="plan-name">Gratis</h3>
+              <p class="price">US$0</p>
+              <p class="plan-desc">Para validar tus primeras ideas de producto.</p>
+              <ul>
+                <li><svg class="icon"><use href="#i-check" /></svg>Precio recomendado</li>
+                <li><svg class="icon"><use href="#i-check" /></svg>Nivel de competencia e insights</li>
+                <li><svg class="icon"><use href="#i-check" /></svg>Calculadora de ganancia</li>
+                <li class="off"><svg class="icon"><use href="#i-minus" /></svg>Más vendidos y oportunidades</li>
+                <li class="off"><svg class="icon"><use href="#i-minus" /></svg>Historial de precios</li>
+                <li class="off"><svg class="icon"><use href="#i-minus" /></svg>Palabras clave y exportar a Excel</li>
+              </ul>
+              <a class="btn btn-outline" href="#">Agregar a Chrome</a>
+            </div>
+
+            <div class="plan plan-pro">
+              <h3 class="plan-name"><svg class="icon"><use href="#i-crown" /></svg>Pro</h3>
+              <p class="price">US$9.99 <small>/ mes</small></p>
+              <p class="plan-desc">Para vendedores que quieren encontrar productos ganadores.</p>
+              <ul>
+                <li><svg class="icon"><use href="#i-check" /></svg>Todo lo del plan Gratis</li>
+                <li><svg class="icon"><use href="#i-check" /></svg>Más vendidos, más baratos y oportunidades</li>
+                <li><svg class="icon"><use href="#i-check" /></svg>Historial de precios y tendencias</li>
+                <li><svg class="icon"><use href="#i-check" /></svg>Palabras clave de los líderes</li>
+                <li><svg class="icon"><use href="#i-check" /></svg>Exportar búsquedas a Excel</li>
+                <li><svg class="icon"><use href="#i-check" /></svg>Úsalo en hasta 2 computadoras</li>
+              </ul>
+              <a
+                class="btn btn-gold"
+                href="https://competix.lemonsqueezy.com/checkout/buy/7b99cc5d-1d65-41b0-9f15-2f3828087478"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <svg class="icon"><use href="#i-crown" /></svg>
+                Obtener Pro
+              </a>
+            </div>
+          </div>
+          <p class="pricing-note">
+            <svg class="icon" style="display: inline; vertical-align: -3px"><use href="#i-shield" /></svg>
+            Pago seguro procesado por Lemon Squeezy. Los impuestos se calculan según tu país al pagar.
+            Garantía de reembolso de 14 días — <a href="reembolsos.html">ver política</a>.
+          </p>
+        </div>
+      </section>
+
+      <section id="faq">
+        <div class="container">
+          <h2 class="section-title">Preguntas frecuentes</h2>
+          <div class="faq">
+            <details>
+              <summary>¿Cómo activo Competix Pro?</summary>
+              <p>
+                Después de pagar recibes una clave de licencia por correo. Abre cualquier búsqueda en Mercado Libre,
+                entra a una pestaña Pro del panel de Competix, pega la clave y toca "Activar".
+              </p>
+            </details>
+            <details>
+              <summary>¿Puedo cancelar cuando quiera?</summary>
+              <p>
+                Sí. Cancelas desde el enlace del correo de compra y mantienes Pro hasta el final del periodo que ya
+                pagaste. No hay permanencia mínima.
+              </p>
+            </details>
+            <details>
+              <summary>¿Competix accede a mi cuenta de Mercado Libre?</summary>
+              <p>
+                No. Competix solo lee la información pública que ya ves en pantalla. No pide tu usuario ni tu
+                contraseña y no publica ni modifica nada en tu cuenta.
+              </p>
+            </details>
+            <details>
+              <summary>¿Qué pasa con mis datos?</summary>
+              <p>
+                El historial de precios y tu configuración se guardan solo en tu navegador. No tenemos servidores que
+                guarden lo que buscas. Lee la <a href="privacidad.html">política de privacidad</a>.
+              </p>
+            </details>
+            <details>
+              <summary>¿En qué países funciona?</summary>
+              <p>En Mercado Libre Colombia, México, Argentina y Chile, en Google Chrome para computadora.</p>
+            </details>
+            <details>
+              <summary>¿Qué tan exactos son los datos?</summary>
+              <p>
+                Competix calcula a partir de lo que muestra Mercado Libre. Por ejemplo, Mercado Libre redondea las
+                ventas ("+100 vendidos"), así que algunos números son aproximados. Úsalos como guía para decidir.
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <span>© 2026 Competix · <a href="mailto:CORREO_DE_CONTACTO">CORREO_DE_CONTACTO</a></span>
+        <nav class="footer-links">
+          <a href="terminos.html">Términos</a>
+          <a href="privacidad.html">Privacidad</a>
+          <a href="reembolsos.html">Reembolsos</a>
+        </nav>
+        <p class="disclaimer">
+          Competix es una herramienta independiente y no está afiliada, asociada ni respaldada por Mercado Libre.
+          Mercado Libre es una marca registrada de sus respectivos dueños.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
