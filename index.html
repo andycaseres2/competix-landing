@@ -12,6 +12,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
+    <!-- Marks JS as available, so reveal animations never hide content when scripts fail. -->
+    <script>document.documentElement.classList.add("js");</script>
+    <script src="script.js" defer></script>
   </head>
   <body>
     <!-- Lucide icons (ISC license), defined once and reused with <use>. -->
@@ -23,17 +26,22 @@
       <symbol id="i-history" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" /><path d="M3 3v5h5" /><path d="M12 7v5l4 2" /></symbol>
       <symbol id="i-tag" viewBox="0 0 24 24"><path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z" /><circle cx="7.5" cy="7.5" r=".5" fill="currentColor" /></symbol>
       <symbol id="i-dollar" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8" /><path d="M12 18V6" /></symbol>
-      <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" /><path d="M9 18h6" /><path d="M10 22h4" /></symbol>
       <symbol id="i-signal" viewBox="0 0 24 24"><path d="M2 20h.01" /><path d="M7 20v-4" /><path d="M12 20v-8" /></symbol>
-      <symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" x2="12" y1="15" y2="3" /></symbol>
       <symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><path d="m9 12 2 2 4-4" /></symbol>
       <symbol id="i-minus" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><path d="M8 12h8" /></symbol>
-      <symbol id="i-crown" viewBox="0 0 24 24"><path d="M11.562 3.266a.5.5 0 0 1 .876 0L15.39 8.87a1 1 0 0 0 1.516.294L21.183 5.5a.5.5 0 0 1 .798.519l-2.834 10.246a1 1 0 0 1-.956.734H5.81a1 1 0 0 1-.957-.734L2.02 6.02a.5.5 0 0 1 .798-.519l4.276 3.664a1 1 0 0 0 1.516-.294z" /><path d="M5 21h14" /></symbol>
+      <symbol id="i-crown" viewBox="0 0 24 24"><path d="M11.562 3.266a.5.5 0 0 1 .876 0L15.39 8.87a1 1 0 0 0 1.516.294L21.183 5.5a.5.5 0 0 1 .798.519l-2.834 10.246a1 1 0 0 1-.956.734H5.81a1 1 0 0 1-.957-.734L2.020 6.02a.5.5 0 0 1 .798-.519l4.276 3.664a1 1 0 0 0 1.516-.294z" /><path d="M5 21h14" /></symbol>
       <symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" /></symbol>
+      <symbol id="i-shield-check" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" /><path d="m9 12 2 2 4-4" /></symbol>
+      <symbol id="i-laptop" viewBox="0 0 24 24"><path d="M20 16V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9m16 0H4m16 0 1.28 2.55a1 1 0 0 1-.9 1.45H3.62a1 1 0 0 1-.9-1.45L4 16" /></symbol>
+      <symbol id="i-eye-off" viewBox="0 0 24 24"><path d="M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49" /><path d="M14.084 14.158a3 3 0 0 1-4.242-4.242" /><path d="M17.479 17.499a10.75 10.75 0 0 1-15.417-5.151 1 1 0 0 1 0-.696 10.75 10.75 0 0 1 4.446-5.143" /><path d="m2 2 20 20" /></symbol>
+      <symbol id="i-key" viewBox="0 0 24 24"><path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z" /><circle cx="16.5" cy="7.5" r=".5" fill="currentColor" /></symbol>
+      <symbol id="i-lock" viewBox="0 0 24 24"><rect width="18" height="11" x="3" y="11" rx="2" ry="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></symbol>
+      <symbol id="i-package" viewBox="0 0 24 24"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z" /><path d="M12 22V12" /><path d="m3.3 7 7.703 4.734a2 2 0 0 0 1.994 0L20.7 7" /><path d="m7.5 4.27 9 5.15" /></symbol>
+      <symbol id="i-card" viewBox="0 0 24 24"><rect width="20" height="14" x="2" y="5" rx="2" /><line x1="2" x2="22" y1="10" y2="10" /></symbol>
       <symbol id="i-chrome" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><circle cx="12" cy="12" r="4" /><line x1="21.17" x2="12" y1="8" y2="8" /><line x1="3.95" x2="8.54" y1="6.06" y2="14" /><line x1="10.88" x2="15.46" y1="21.94" y2="14" /></symbol>
     </svg>
 
-    <header class="site-header">
+    <header class="site-header" id="site-header">
       <div class="container">
         <a class="brand" href="./">
           <svg class="icon"><use href="#i-chart" /></svg>
@@ -41,9 +49,9 @@
         </a>
         <nav class="nav">
           <a href="#funciones">Funciones</a>
-          <a href="#como-funciona">Cómo funciona</a>
+          <a href="#asi-se-ve">Así se ve</a>
+          <a href="#seguridad">Seguridad</a>
           <a href="#precios">Precios</a>
-          <a href="#faq">Preguntas</a>
           <a class="btn btn-gold" href="#precios">Empezar gratis</a>
         </nav>
       </div>
@@ -52,7 +60,7 @@
     <main>
       <section class="hero">
         <div class="container">
-          <div>
+          <div class="hero-copy">
             <span class="eyebrow">
               <svg class="icon"><use href="#i-chrome" /></svg>
               Extensión para Google Chrome
@@ -64,92 +72,62 @@
             </p>
             <div class="hero-actions">
               <!-- Replace href with the Chrome Web Store listing once it is published. -->
-              <a class="btn btn-gold" href="#precios">
+              <a class="btn btn-gold btn-shine" href="#precios">
                 <svg class="icon"><use href="#i-chrome" /></svg>
                 Agregar a Chrome — gratis
               </a>
-              <a class="btn btn-outline" href="#como-funciona">Ver cómo funciona</a>
+              <a class="btn btn-outline" href="#asi-se-ve">Ver cómo funciona</a>
             </div>
-            <p class="hero-note">Funciona en Mercado Libre Colombia, México, Argentina y Chile.</p>
+            <ul class="hero-trust">
+              <li><svg class="icon"><use href="#i-shield-check" /></svg>Tus datos no salen de tu navegador</li>
+              <li><svg class="icon"><use href="#i-check" /></svg>Colombia, México, Argentina y Chile</li>
+            </ul>
           </div>
 
-          <!-- Static drawing of the panel, so the page needs no screenshots. -->
-          <div class="mock" role="img" aria-label="Vista del panel de Competix sobre una búsqueda de Mercado Libre">
-            <div class="mock-header">
-              Competix
-              <span class="mock-pro"><svg class="icon"><use href="#i-crown" /></svg> Pro</span>
-            </div>
-            <div class="mock-tabs">
-              <span class="active"><svg class="icon"><use href="#i-chart" /></svg>Resumen</span>
-              <span><svg class="icon"><use href="#i-calc" /></svg>Ganancia</span>
-              <span><svg class="icon"><use href="#i-trophy" /></svg>Productos</span>
-            </div>
-            <div class="mock-body">
-              <div class="mock-card">
-                <span class="mock-label"><svg class="icon"><use href="#i-dollar" /></svg>Precio recomendado</span>
-                <strong class="mock-value">$ 62.900 – $ 74.500</strong>
-                <span class="mock-label">Rango donde vende el top 10</span>
-              </div>
-              <div class="mock-badges">
-                <span class="badge badge-medium"><svg class="icon"><use href="#i-signal" /></svg>Competencia media</span>
-                <span class="badge badge-neutral">48 publicaciones</span>
-              </div>
-              <div class="mock-insight">
-                <svg class="icon"><use href="#i-bulb" /></svg>
-                <span>Los que más venden cobran 8% menos que el mercado. Acá gana el precio.</span>
-              </div>
-              <div class="mock-card">
-                <span class="mock-label"><svg class="icon"><use href="#i-history" /></svg>Historial de precio</span>
-                <svg class="mock-chart" viewBox="0 0 300 70" preserveAspectRatio="none" aria-hidden="true">
-                  <line x1="0" x2="300" y1="66" y2="66" stroke="#2a2a2a" />
-                  <polyline
-                    points="6,30 50,30 94,44 138,44 182,14 226,22 270,56 294,50"
-                    fill="none"
-                    stroke="#facc15"
-                    stroke-width="2"
-                    stroke-linejoin="round"
-                    vector-effect="non-scaling-stroke"
-                  />
-                </svg>
-              </div>
-            </div>
+          <div class="hero-visual">
+            <div class="glow" aria-hidden="true"></div>
+            <img
+              class="float"
+              src="assets/panel-resumen.png"
+              width="487"
+              height="680"
+              alt="Panel de Competix mostrando el precio recomendado, el nivel de competencia y el detalle del mercado"
+            />
           </div>
         </div>
       </section>
 
       <section id="funciones">
         <div class="container">
-          <h2 class="section-title">Todo lo que necesitas para decidir qué vender</h2>
-          <p class="section-lead">
-            Abres una búsqueda en Mercado Libre y Competix aparece al costado con el análisis listo.
-          </p>
+          <h2 class="section-title reveal">Todo lo que necesitas para decidir qué vender</h2>
+          <p class="section-lead reveal">Abres una búsqueda en Mercado Libre y Competix aparece al costado con el análisis listo.</p>
           <div class="features">
-            <article class="feature">
+            <article class="feature reveal" style="--d: 0">
               <div class="feature-icon"><svg class="icon"><use href="#i-dollar" /></svg></div>
               <h3>Precio recomendado</h3>
               <p>El rango de precio donde venden los líderes de esa búsqueda, para no regalar margen ni quedar caro.</p>
             </article>
-            <article class="feature">
+            <article class="feature reveal" style="--d: 1">
               <div class="feature-icon"><svg class="icon"><use href="#i-calc" /></svg></div>
               <h3>Calculadora de ganancia</h3>
               <p>Escribe tu costo y ve cuánto te queda por unidad después de la comisión y el envío.</p>
             </article>
-            <article class="feature">
+            <article class="feature reveal" style="--d: 2">
               <div class="feature-icon"><svg class="icon"><use href="#i-signal" /></svg></div>
               <h3>Nivel de competencia</h3>
               <p>Cuántas publicaciones ya venden miles de unidades: sabes si es fácil o difícil entrar.</p>
             </article>
-            <article class="feature">
+            <article class="feature reveal" style="--d: 0">
               <div class="feature-icon"><svg class="icon"><use href="#i-target" /></svg></div>
               <h3>Oportunidades</h3>
               <p>Productos que venden mucho pero tienen mala calificación: clientes esperando una mejor oferta.</p>
             </article>
-            <article class="feature">
+            <article class="feature reveal" style="--d: 1">
               <div class="feature-icon"><svg class="icon"><use href="#i-history" /></svg></div>
               <h3>Historial de precios</h3>
               <p>Cómo cambia el precio de cada publicación con el tiempo, y flechas de tendencia en cada búsqueda.</p>
             </article>
-            <article class="feature">
+            <article class="feature reveal" style="--d: 2">
               <div class="feature-icon"><svg class="icon"><use href="#i-tag" /></svg></div>
               <h3>Palabras clave y exportación</h3>
               <p>Las palabras que usan los más vendidos en sus títulos y toda la búsqueda exportada a Excel.</p>
@@ -158,20 +136,57 @@
         </div>
       </section>
 
+      <section id="asi-se-ve" class="showcase-section">
+        <div class="container">
+          <h2 class="section-title reveal">Así se ve Competix</h2>
+          <p class="section-lead reveal">El panel real, tal como aparece al lado de tus búsquedas.</p>
+
+          <div class="showcase reveal" data-showcase>
+            <div class="showcase-tabs" role="tablist" aria-label="Pantallas de Competix">
+              <button class="showcase-tab is-active" role="tab" aria-selected="true" data-index="0">
+                <svg class="icon"><use href="#i-chart" /></svg>
+                <span><strong>Resumen</strong><small>Precio recomendado y competencia</small></span>
+              </button>
+              <button class="showcase-tab" role="tab" aria-selected="false" data-index="1">
+                <svg class="icon"><use href="#i-trophy" /></svg>
+                <span><strong>Productos</strong><small>Más vendidos, con calificación y tendencia</small></span>
+              </button>
+              <button class="showcase-tab" role="tab" aria-selected="false" data-index="2">
+                <svg class="icon"><use href="#i-calc" /></svg>
+                <span><strong>Ganancia</strong><small>Lo que te queda por unidad</small></span>
+              </button>
+              <button class="showcase-tab" role="tab" aria-selected="false" data-index="3">
+                <svg class="icon"><use href="#i-history" /></svg>
+                <span><strong>Historial</strong><small>Cómo cambió el precio en el tiempo</small></span>
+              </button>
+              <div class="showcase-progress" aria-hidden="true"><span></span></div>
+            </div>
+
+            <div class="showcase-stage">
+              <div class="glow glow--soft" aria-hidden="true"></div>
+              <img class="showcase-img is-active" src="assets/panel-resumen.png" width="487" height="680" alt="Pestaña Resumen: precio recomendado, competencia e insight de precio" />
+              <img class="showcase-img" src="assets/panel-productos.png" width="487" height="605" alt="Pestaña Productos: los más vendidos con calificación y tendencia de precio" loading="lazy" />
+              <img class="showcase-img" src="assets/panel-ganancia.png" width="487" height="529" alt="Pestaña Ganancia: calculadora con la ganancia por unidad" loading="lazy" />
+              <img class="showcase-img" src="assets/panel-historial.png" width="487" height="720" alt="Pestaña Historial: gráfico del precio de una publicación en los últimos 30 días" loading="lazy" />
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="como-funciona">
         <div class="container">
-          <h2 class="section-title">Cómo funciona</h2>
-          <p class="section-lead">En menos de un minuto estás analizando tu primer producto.</p>
+          <h2 class="section-title reveal">Cómo funciona</h2>
+          <p class="section-lead reveal">En menos de un minuto estás analizando tu primer producto.</p>
           <div class="steps">
-            <div class="step">
+            <div class="step reveal" style="--d: 0">
               <h3>Instala la extensión</h3>
-              <p>Agrégala a Google Chrome. No necesitas crear cuenta para el plan gratis.</p>
+              <p>Agrégala a Google Chrome. Se abre una guía corta de bienvenida y no necesitas crear cuenta.</p>
             </div>
-            <div class="step">
+            <div class="step reveal" style="--d: 1">
               <h3>Busca en Mercado Libre</h3>
               <p>Busca cualquier producto como lo haces siempre. Competix lee la página y arma el análisis.</p>
             </div>
-            <div class="step">
+            <div class="step reveal" style="--d: 2">
               <h3>Decide con datos</h3>
               <p>Revisa el precio, la competencia y tu ganancia antes de invertir en inventario.</p>
             </div>
@@ -179,12 +194,57 @@
         </div>
       </section>
 
+      <section id="seguridad" class="security-section">
+        <div class="container">
+          <span class="eyebrow eyebrow--center reveal"><svg class="icon"><use href="#i-shield" /></svg>Seguridad y privacidad</span>
+          <h2 class="section-title reveal">Hecha para que confíes en ella</h2>
+          <p class="section-lead reveal">
+            Una extensión ve las páginas que visitas, por eso diseñamos Competix para pedir lo mínimo y guardar lo mínimo.
+          </p>
+          <div class="security-grid">
+            <article class="security-card reveal" style="--d: 0">
+              <svg class="icon"><use href="#i-laptop" /></svg>
+              <h3>Tus datos se quedan en tu computadora</h3>
+              <p>El historial de precios y tu configuración se guardan solo en tu navegador. No tenemos servidores que guarden lo que buscas.</p>
+            </article>
+            <article class="security-card reveal" style="--d: 1">
+              <svg class="icon"><use href="#i-eye-off" /></svg>
+              <h3>No toca tu cuenta de Mercado Libre</h3>
+              <p>Solo lee la información pública que ya ves en pantalla. No pide tu usuario ni tu contraseña y no publica, compra ni modifica nada.</p>
+            </article>
+            <article class="security-card reveal" style="--d: 2">
+              <svg class="icon"><use href="#i-key" /></svg>
+              <h3>Tu licencia, en una página protegida</h3>
+              <p>La clave de Pro se activa en "Mi cuenta", una página propia de la extensión que ningún sitio web puede leer.</p>
+            </article>
+            <article class="security-card reveal" style="--d: 0">
+              <svg class="icon"><use href="#i-lock" /></svg>
+              <h3>Permisos mínimos</h3>
+              <p>Solo funciona en Mercado Libre y solo se conecta a Lemon Squeezy para validar tu licencia. Nada más.</p>
+            </article>
+            <article class="security-card reveal" style="--d: 1">
+              <svg class="icon"><use href="#i-package" /></svg>
+              <h3>Sin código remoto</h3>
+              <p>Todo el código viene dentro de la extensión y Google lo revisa antes de publicarlo. Nadie puede cambiar lo que hace por fuera de la tienda.</p>
+            </article>
+            <article class="security-card reveal" style="--d: 2">
+              <svg class="icon"><use href="#i-card" /></svg>
+              <h3>Pagos seguros</h3>
+              <p>Lemon Squeezy procesa los pagos: nunca vemos tu tarjeta. Y nuestras cuentas de desarrollador usan verificación en dos pasos.</p>
+            </article>
+          </div>
+          <p class="security-note reveal">
+            ¿Quieres el detalle? Lee la <a href="privacidad.html">política de privacidad</a>.
+          </p>
+        </div>
+      </section>
+
       <section id="precios">
         <div class="container">
-          <h2 class="section-title">Precios simples</h2>
-          <p class="section-lead">Empieza gratis. Pasa a Pro cuando quieras ir más a fondo. Cancela cuando quieras.</p>
+          <h2 class="section-title reveal">Precios simples</h2>
+          <p class="section-lead reveal">Empieza gratis. Pasa a Pro cuando quieras ir más a fondo. Cancela cuando quieras.</p>
           <div class="pricing">
-            <div class="plan">
+            <div class="plan reveal" style="--d: 0">
               <h3 class="plan-name">Gratis</h3>
               <p class="price">US$0</p>
               <p class="plan-desc">Para validar tus primeras ideas de producto.</p>
@@ -199,7 +259,8 @@
               <a class="btn btn-outline" href="#">Agregar a Chrome</a>
             </div>
 
-            <div class="plan plan-pro">
+            <div class="plan plan-pro reveal" style="--d: 1">
+              <span class="plan-tag">Recomendado</span>
               <h3 class="plan-name"><svg class="icon"><use href="#i-crown" /></svg>Pro</h3>
               <p class="price">US$9.99 <small>/ mes</small></p>
               <p class="plan-desc">Para vendedores que quieren encontrar productos ganadores.</p>
@@ -212,7 +273,7 @@
                 <li><svg class="icon"><use href="#i-check" /></svg>Úsalo en hasta 2 computadoras</li>
               </ul>
               <a
-                class="btn btn-gold"
+                class="btn btn-gold btn-shine"
                 href="https://competix.lemonsqueezy.com/checkout/buy/7b99cc5d-1d65-41b0-9f15-2f3828087478"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -222,7 +283,7 @@
               </a>
             </div>
           </div>
-          <p class="pricing-note">
+          <p class="pricing-note reveal">
             <svg class="icon" style="display: inline; vertical-align: -3px"><use href="#i-shield" /></svg>
             Pago seguro procesado por Lemon Squeezy. Los impuestos se calculan según tu país al pagar.
             Garantía de reembolso de 14 días — <a href="reembolsos.html">ver política</a>.
@@ -232,13 +293,21 @@
 
       <section id="faq">
         <div class="container">
-          <h2 class="section-title">Preguntas frecuentes</h2>
-          <div class="faq">
+          <h2 class="section-title reveal">Preguntas frecuentes</h2>
+          <div class="faq reveal">
             <details>
               <summary>¿Cómo activo Competix Pro?</summary>
               <p>
                 Después de pagar recibes una clave de licencia por correo. Toca el ícono de Competix en la barra de
                 Chrome (o el botón "Ya tengo una clave" del panel), pega la clave en "Mi cuenta" y toca "Activar".
+              </p>
+            </details>
+            <details>
+              <summary>¿Es segura la extensión?</summary>
+              <p>
+                Sí. Competix solo funciona en Mercado Libre, no tiene acceso a tu cuenta ni a tus contraseñas, guarda tus
+                datos solo en tu navegador y todo su código pasa por la revisión de Google. Mira la sección
+                <a href="#seguridad">Seguridad y privacidad</a>.
               </p>
             </details>
             <details>
